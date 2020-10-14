@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:hl_shadowColor="#4D4C4C4C"
+    app:hl_shadowHiddenBottom="true"
+    app:hl_shadowHiddenLeft="false"
+    app:hl_shadowHiddenRight="true"
+    app:hl_shadowHiddenTop="true"
+    app:hl_shadowLimit="@dimen/dp_6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_6"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/all_white">
+
+            <RelativeLayout
+                android:id="@+id/relay_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="@dimen/dp_10"
+                    android:layout_height="@dimen/dp_10"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:src="@drawable/back_pad" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/iv_back"
+                    android:text="返回"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_8" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/other_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:maxEms="14"
+                android:maxLines="1"
+                android:text="在线客服"
+                android:textColor="@color/all_black"
+                android:textSize="@dimen/sp_8" />
+
+            <ImageView
+                android:id="@+id/iv_call"
+                android:layout_width="@dimen/dp_12"
+                android:layout_height="@dimen/dp_12"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_customer_call"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/freshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F8F8F8" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#C0C0C0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shap_gray_2"
+                    android:gravity="bottom">
+
+                    <EditText
+                        android:id="@+id/chat_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="@null"
+                        android:cursorVisible="false"
+                        android:hint="请输入您的问题"
+                        android:maxLines="4"
+                        android:minHeight="20dp"
+                        android:paddingRight="1dp"
+                        android:textColor="@color/all_black"
+                        android:textColorHint="#CDCDCD"
+                        android:textSize="@dimen/sp_8" />
+
+                    <TextView
+                        android:id="@+id/tv_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:text="0/100"
+                        android:textColor="#CDCDCD"
+                        android:textSize="@dimen/sp_6" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/chat_send"
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="@string/send"
+                    android:textColor="#6A48F5"
+                    android:textSize="@dimen/sp_7"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.lihang.ShadowLayout>

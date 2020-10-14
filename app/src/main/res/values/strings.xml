@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="confirm_leave_room_content">确定离开房间？</string>
+    <string name="confirm">确定</string>
+    <string name="request_error">服务器请求失败：%1$d</string>
+
+    <string name="app_name">画了么录播课</string>
+
+
+    <string name="user_rule_content_login1">注册登录即代表已阅读并同意</string>
+    <string name="user_rule_content_login2">《隐私协议》</string>
+    <string name="user_rule_content_login3">\n和</string>
+    <string name="user_rule_content_login4">《画了么用户协议》</string>
+
+    <string name="user_rule_content_new1">感谢您选择画了么APP！我们非常重视您的个人信息和隐私保护。为了更好的保证您的个人权益，在您使用我们的产品前， 请您认真阅读</string>
+    <string name="user_rule_content_new2">《画了么APP用户协议》</string>
+    <string name="user_rule_content_new3">和</string>
+    <string name="user_rule_content_new4">《隐私协议》</string>
+    <string name="user_rule_content_new5">的全部内容，点击同意并接受全部条款后开始使用我们的产品和服务。</string>
+
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_unsupported">不支持错误</string>
+    <string name="errcode_unknown">发送返回</string>
+</resources>

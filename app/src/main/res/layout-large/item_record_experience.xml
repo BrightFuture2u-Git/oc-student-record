@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:hl_cornerRadius="10dp"
+    app:hl_shadowColor="#0d000000"
+    app:hl_shadowLimit="@dimen/dp_10">
+
+    <RelativeLayout
+        android:visibility="invisible"
+        android:id="@+id/relay_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最长的围巾"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_9" />
+
+        <TextView
+            android:id="@+id/tv_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@drawable/bg_yellow_4"
+            android:paddingLeft="@dimen/dp_3"
+            android:paddingTop="@dimen/dp_1"
+            android:paddingRight="@dimen/dp_3"
+            android:paddingBottom="@dimen/dp_1"
+            android:text="赠送绘画大礼包，央美名师，空间思维"
+            android:textColor="#E1891C"
+            android:textSize="@dimen/sp_6" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_tags"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="开课时间：2020-09-30"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_7" />
+
+        <TextView
+            android:id="@+id/tv_price_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="¥49"
+            android:textColor="#FC6212"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/tv_price_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_13"
+            android:layout_toRightOf="@+id/tv_price_new"
+            android:text="原价499"
+            android:background="@drawable/tv_center_line_gray"
+            android:textColor="#CDCDCD"
+            android:textSize="@dimen/sp_6" />
+
+        <TextView
+            android:id="@+id/tv_num_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_13"
+            android:text="已有14人报名"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_6" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relay_empty"
+        android:minHeight="@dimen/dp_80"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="更多课程敬请期待"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_centerHorizontal="true"
+            android:textColor="#CDCDCD"
+            android:textSize="@dimen/sp_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_empty_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+</com.lihang.ShadowLayout>

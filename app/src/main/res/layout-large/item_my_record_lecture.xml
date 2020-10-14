@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_8"
+    android:layout_marginRight="@dimen/dp_8"
+    android:background="@drawable/shap_bg_white_12"
+    android:orientation="horizontal"
+    android:padding="@dimen/dp_10">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_order_time"
+        android:text="文字标题文字标题文字标题文字标题文字标题"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_8" />
+
+    <TextView
+        android:id="@+id/tv_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="开课时间：2020-09-30"
+        android:textColor="#999999"
+        android:textSize="@dimen/sp_7" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_start_time">
+
+        <TextView
+            android:id="@+id/tv_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="实付："
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_7" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_pay"
+            android:text="¥49"
+            android:textColor="#FC6212"
+            android:textSize="@dimen/sp_9" />
+
+        <TextView
+            android:id="@+id/tv_watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shap_violet_20"
+            android:drawableLeft="@drawable/ic_play_32"
+            android:drawablePadding="@dimen/dp_1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_9"
+            android:paddingTop="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_9"
+            android:paddingBottom="@dimen/dp_5"
+            android:text="立即观看"
+            android:textColor="#6A48F5"
+            android:textSize="@dimen/sp_6"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

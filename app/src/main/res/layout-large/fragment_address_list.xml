@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:hl_shadowColor="#4D4C4C4C"
+    app:hl_shadowHiddenBottom="true"
+    app:hl_shadowHiddenLeft="false"
+    app:hl_shadowHiddenRight="true"
+    app:hl_shadowHiddenTop="true"
+    app:hl_shadowLimit="@dimen/dp_6">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_6"
+        android:background="#FBFBFB">
+
+        <include
+            android:id="@+id/bar"
+            layout="@layout/my_action_bar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/bar"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_35" />
+
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_25"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp_8"
+            android:background="@drawable/shape_bg_btn_submit"
+            android:stateListAnimator="@null"
+            android:text="新建地址"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_9" />
+    </RelativeLayout>
+
+</com.lihang.ShadowLayout>

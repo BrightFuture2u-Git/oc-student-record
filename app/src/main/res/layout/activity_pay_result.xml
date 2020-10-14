@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="io.drew.record.activitys.EditNickNameActivity">
+
+    <LinearLayout
+        android:id="@+id/line_success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_pay_success"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_66"
+            android:text="支付成功"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_22" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_80"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_55"
+            android:paddingRight="@dimen/dp_55">
+
+            <TextView
+                android:id="@+id/tv_tip"
+                android:layout_width="@dimen/dp_136"
+                android:layout_height="wrap_content"
+                android:text="请务必通过二维码添加老师微信，获取课程安排"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <ImageView
+                android:background="@drawable/bg_blue_2"
+                android:padding="@dimen/dp_2"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_width="@dimen/dp_90"
+                android:layout_height="@dimen/dp_90"
+                android:src="@drawable/qr_add_teacher" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_55"
+            android:paddingRight="@dimen/dp_55">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.下载老师微信二维码"
+                android:textColor="#999999"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2.打开微信，点击右上角「扫一扫」"
+                android:textColor="#999999"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3.进入「扫一扫」，点击右下角图片按钮，选择老师微信二维码图片"
+                android:textColor="#999999"
+                android:textSize="@dimen/sp_14" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:src="@drawable/bg_add_teacher" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_success"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="@drawable/shape_bg_btn_input_phone"
+                android:stateListAnimator="@null"
+                android:text="完成"
+                android:textColor="#6A48F5"
+                android:textSize="@dimen/sp_17" />
+
+            <Button
+                android:id="@+id/download"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_weight="8"
+                android:background="@drawable/shape_bg_btn_submit"
+                android:stateListAnimator="@null"
+                android:text="下载老师微信二维码"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_17" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_fail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pay_fail" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_28"
+            android:layout_marginBottom="@dimen/dp_70"
+            android:text="支付失败"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_24" />
+
+        <Button
+            android:id="@+id/btn_repay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_66"
+            android:layout_marginRight="@dimen/dp_66"
+            android:background="@drawable/shape_bg_btn_submit"
+            android:stateListAnimator="@null"
+            android:text="重新支付"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_17" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_66"
+            android:layout_marginTop="@dimen/dp_25"
+            android:layout_marginRight="@dimen/dp_66"
+            android:background="@drawable/shape_bg_btn_input_phone"
+            android:stateListAnimator="@null"
+            android:text="取消订单"
+            android:textColor="#6A48F5"
+            android:textSize="@dimen/sp_17" />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:hl_cornerRadius="10dp"
+    app:hl_shadowColor="#0d000000"
+    app:hl_shadowLimit="@dimen/dp_10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_20">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最长的围巾"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:id="@+id/tv_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/bg_yellow_4"
+            android:paddingLeft="@dimen/dp_6"
+            android:paddingTop="@dimen/dp_2"
+            android:paddingRight="@dimen/dp_6"
+            android:paddingBottom="@dimen/dp_2"
+            android:text="赠送绘画大礼包，央美名师，空间思维"
+            android:textColor="#E1891C"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_tags"
+            android:layout_marginTop="@dimen/dp_15"
+            android:text="开课时间：2020-09-30"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_13" />
+
+        <TextView
+            android:id="@+id/tv_price_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="¥49"
+            android:textColor="#FC6212"
+            android:textSize="@dimen/sp_20" />
+
+        <TextView
+            android:id="@+id/tv_price_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_26"
+            android:layout_toRightOf="@+id/tv_price_new"
+            android:text="原价499"
+            android:background="@drawable/tv_center_line_gray"
+            android:textColor="#CDCDCD"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_num_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_26"
+            android:text="已有14人报名"
+            android:textColor="#999999"
+            android:textSize="@dimen/sp_12" />
+
+    </RelativeLayout>
+
+
+</com.lihang.ShadowLayout>

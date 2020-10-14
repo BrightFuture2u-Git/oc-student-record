@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--白底灰边20弧度-->
+    <solid android:color="@color/white" />
+
+    <stroke
+        android:width="1px"
+        android:color="#CDCDCD" />
+
+    <corners android:radius="@dimen/dp_20" />
+
+</shape>

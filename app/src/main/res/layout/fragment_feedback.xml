@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/my_action_bar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="请输入您的问题"
+        android:textColor="#666666"
+        android:textSize="@dimen/sp_8" />
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/shap_feedback_5"
+        android:gravity="left"
+        android:minLines="7"
+        android:padding="@dimen/dp_5"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_8" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_15"
+        android:text="请输入您的联系方式"
+        android:textColor="#666666"
+        android:textSize="@dimen/sp_8" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/shap_feedback_5"
+        android:gravity="left"
+        android:inputType="phone"
+        android:minLines="1"
+        android:padding="@dimen/dp_5"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_17"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:background="@drawable/shape_bg_btn_input"
+        android:stateListAnimator="@null"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_9" />
+</LinearLayout>

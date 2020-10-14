@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:hl_shadowColor="#4D4C4C4C"
+    app:hl_shadowHiddenBottom="true"
+    app:hl_shadowHiddenLeft="false"
+    app:hl_shadowHiddenRight="true"
+    app:hl_shadowHiddenTop="true"
+    app:hl_shadowLimit="@dimen/dp_6">
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/dp_6"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/my_action_bar" />
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/article_recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</com.lihang.ShadowLayout>

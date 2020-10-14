@@ -1,0 +1,2 @@
+include ':app', ':base', '7moorsdk:app'
+rootProject.name='oc-student-record'

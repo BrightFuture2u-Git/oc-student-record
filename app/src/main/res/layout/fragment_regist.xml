@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_189"
+    android:layout_height="@dimen/dp_228"
+    android:fillViewport="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shap_white_10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_cancle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_7"
+                android:text="取消"
+                android:textColor="#999999"
+                android:textSize="@dimen/sp_8" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_9" />
+
+            <TextView
+                android:id="@+id/tv_toLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp_7"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="去登录"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_8" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_login_left_pad" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_login_right_pad" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/dp_41"
+                android:layout_height="@dimen/dp_56"
+                android:layout_marginTop="@dimen/dp_28"
+                android:src="@drawable/ic_login_pad" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_14"
+                android:layout_marginRight="@dimen/dp_16"
+                android:background="@drawable/shape_bg_btn_input_phone"
+                android:hint="输入手机号"
+                android:inputType="phone"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingTop="@dimen/dp_6"
+                android:paddingRight="@dimen/dp_12"
+                android:paddingBottom="@dimen/dp_6"
+                android:textSize="@dimen/sp_8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginRight="@dimen/dp_16"
+                android:background="@drawable/shape_bg_btn_input_phone"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_bg_btn_input_phone"
+                    android:hint="输入验证码"
+                    android:inputType="number"
+                    android:paddingBottom="@dimen/dp_6"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/sp_8" />
+
+                <TextView
+                    android:id="@+id/tv_getCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="获取验证码"
+                    android:textColor="#7350F5"
+                    android:textSize="@dimen/sp_7" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginRight="@dimen/dp_16"
+                android:background="@drawable/shape_bg_btn_input"
+                android:clickable="false"
+                android:stateListAnimator="@null"
+                android:text="注册"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_8" />
+
+            <TextView
+                android:id="@+id/tv_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_17"
+                android:gravity="center"
+                android:textColor="#999999"
+                android:textSize="@dimen/sp_6" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_140"
+    android:layout_height="@dimen/dp_110">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp_5"
+        android:background="@drawable/bg_dialog_10">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:minLines="1"
+            android:textStyle="bold"
+            android:text="@string/confirm_leave_room_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_8" />
+
+        <TextView
+            android:id="@+id/tv_dialog_confirm"
+            android:layout_width="@dimen/dp_95"
+            android:layout_height="@dimen/dp_22"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shape_bg_btn_submit"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/confirm"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_7" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_dialog_cancel"
+        android:layout_width="@dimen/dp_18"
+        android:layout_height="@dimen/dp_18"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_close_dialog" />
+</RelativeLayout>

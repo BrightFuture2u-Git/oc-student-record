@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:id="@+id/realy_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_45"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_45"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:background="@drawable/shap_gray_1"
+                android:paddingBottom="@dimen/dp_5">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="@dimen/dp_19"
+                    android:layout_height="@dimen/dp_19"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_9"
+                    android:layout_marginRight="@dimen/dp_7"
+                    android:src="@drawable/head_user_placeholder" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_toRightOf="@+id/iv_head"
+                    android:text="名字"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_8" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_marginTop="@dimen/dp_1"
+                    android:layout_toRightOf="@+id/iv_head"
+                    android:text="创作于2020-08-01"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/sp_6" />
+
+                <io.drew.record.view.SquareImageView
+                    android:id="@+id/iv_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_head"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_placeholder_mywork"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_work"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_12"
+                    android:paddingBottom="@dimen/dp_10"
+                    android:text="送给妈妈的礼物"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_8" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/tv_content"
+                    android:background="#EAEAEA" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:text="在线学美术，就上画了么"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/sp_6" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/ic_erweima_create_img" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <com.lihang.ShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hl_cornerRadius="@dimen/dp_10"
+        app:hl_shadowColor="#1A4C4C4C"
+        app:hl_shadowHiddenBottom="true"
+        app:hl_shadowHiddenLeft="true"
+        app:hl_shadowHiddenRight="true"
+        app:hl_shadowHiddenTop="false"
+        app:hl_shadowLimit="@dimen/dp_3">
+
+        <LinearLayout
+            android:id="@+id/line_choose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp_12"
+            android:paddingBottom="@dimen/dp_12">
+
+            <TextView
+                android:id="@+id/tv_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_wechat"
+                android:drawablePadding="@dimen/dp_2"
+                android:gravity="center"
+                android:text="微信"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_7" />
+
+
+            <TextView
+                android:id="@+id/tv_pyq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_22"
+                android:drawableTop="@drawable/ic_pyq"
+                android:drawablePadding="@dimen/dp_2"
+                android:gravity="center"
+                android:text="朋友圈"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_7" />
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_22"
+                android:drawableTop="@drawable/ic_save_img"
+                android:drawablePadding="@dimen/dp_2"
+                android:gravity="center"
+                android:text="保存至手机"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_7" />
+
+        </LinearLayout>
+
+    </com.lihang.ShadowLayout>
+
+    <TextView
+        android:id="@+id/tv_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line_choose"
+        android:background="#F2F2F2"
+        android:gravity="center"
+        android:padding="@dimen/dp_7"
+        android:text="取消"
+        android:textColor="#666666"
+        android:textSize="@dimen/sp_9" />
+
+</LinearLayout>

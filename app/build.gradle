@@ -1,0 +1,181 @@
+apply plugin: 'com.android.application'
+
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+properties.load(inputStream)
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    lintOptions {
+        abortOnError false
+    }
+    defaultConfig {
+        multiDexEnabled true
+    }
+
+    defaultConfig {
+        applicationId "io.drew.record"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 100
+        versionName "1.0.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        packagingOptions {
+            exclude 'META-INF/library_release.kotlin_module'
+        }
+    }
+
+    signingConfigs {
+        sbGoogle {
+            storeFile file("/Users/kangzhengjiang/Downloads/record.jks")
+            storePassword "zhimingweilai"
+            keyAlias "zhimingweilai"
+            keyPassword "zhimingweilai"
+        }
+
+        release {
+            storeFile file("/Users/kangzhengjiang/Downloads/record.jks")
+            storePassword "zhimingweilai"
+            keyAlias "zhimingweilai"
+            keyPassword "zhimingweilai"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.sbGoogle
+            minifyEnabled false
+//            applicationIdSuffix ".debug"
+            buildConfigField 'String', 'API_BASE_URL', '"https://solutions-api.sh.agoralab.co/"'
+            buildConfigField 'String', 'POLICY_URL', '"https://www.agora.io/privacy-policy"'
+            buildConfigField 'String', 'FEED_BACK_URL', '"https://m.brightfuture360.com/class-feedback"'
+            buildConfigField 'String', 'API_URL', '"https://test.brightfuture360.com"'
+//            buildConfigField 'String', 'API_URL', '"https://api.hualeme.com"'
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+//            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'API_BASE_URL', '"https://solutions-api.sh.agoralab.co/"'
+            buildConfigField 'String', 'POLICY_URL', '"https://www.agora.io/privacy-policy"'
+            buildConfigField 'String', 'API_URL', '"https://api.hualeme.com"'
+            buildConfigField 'String', 'FEED_BACK_URL', '"https://wap.hualeme.com/class-feedback"'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def fileName = new File("record_" +
+                    buildType.name + "_v" + defaultConfig.versionName
+                    + "_${releaseTime()}.apk")
+            def outFile = output.outputFile
+            if (outFile != null && outFile.name.endsWith('.apk')) {
+                outputFileName = fileName
+            }
+        }
+    }
+
+    flavorDimensions "app"
+    productFlavors {
+        normal {
+            dimension "app"
+            applicationId "io.drew.record"
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDir "src/main/java"
+            res.srcDir "src/main/res"
+            jniLibs.srcDir "src/main/jniLibs"
+            manifest.srcFile "src/main/AndroidManifest.xml"
+            assets.srcDir "src/main/assets"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd_HH")
+    //精确到分钟会导致每次修改都必须去clean一次
+//    return new Date().format("MM_dd_HH_mm")
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':base')
+    implementation project(path: ':7moorsdk:app')
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+//    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    implementation("com.github.bumptech.glide:glide:4.9.0")
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.6'
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.9.3'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    implementation 'q.rorbin:badgeview:1.1.3'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    implementation files('src\\main\\jar\\IMKFSDK-3.2.6.jar')
+
+    //app-updater
+    implementation 'com.king.app:app-updater:1.0.8-androidx'
+    //app-dialog
+    implementation 'com.king.app:app-dialog:1.0.8-androidx'
+
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
+
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
+    implementation 'com.tuzhenlei:crashhandler:1.0.1'
+    implementation 'com.binioter:guideview:1.0.0'
+    implementation 'com.zzhoujay.richtext:richtext:3.0.7'
+
+    // 友盟统计SDK
+    implementation 'com.umeng.umsdk:common:9.1.0' // (基础组件-必选)
+    implementation 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
+    implementation 'com.umeng.umsdk:crash:0.0.4' // native crash包依赖(必选)
+    // OAID目前为目前国内市场主流的Android Q设备标识，可根据需要选择。
+    implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
+    implementation 'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)
+    implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
+    implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
+
+    compile(name: 'sdk-lecast-release', ext: 'aar')
+    implementation 'com.aliyun.sdk.android:AliyunPlayer:4.5.0-full'
+    implementation 'com.alivc.conan:AlivcConan:0.9.5'
+    implementation 'liji.library.dev:citypickerview:5.2.2'
+    compile (name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
+    implementation 'com.github.lihangleo2:ShadowLayout:3.0.3'
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+
+
+}

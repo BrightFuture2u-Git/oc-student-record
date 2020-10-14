@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bgshadow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:hl_shadowColor="#4D4C4C4C"
+    app:hl_shadowHiddenBottom="true"
+    app:hl_shadowHiddenLeft="false"
+    app:hl_shadowHiddenRight="true"
+    app:hl_shadowHiddenTop="true"
+    app:hl_shadowLimit="@dimen/dp_6">
+
+    <LinearLayout
+        android:id="@+id/line_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_6"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/bar"
+            layout="@layout/my_action_bar" />
+
+        <RelativeLayout
+            android:id="@+id/relay_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <io.drew.record.view.SquareImageView
+                android:id="@+id/iv_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@color/white"
+                android:text="装饰作品" />
+
+            <com.lihang.ShadowLayout
+                android:id="@+id/shadow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:hl_shadowColor="#4D000000"
+                app:hl_shadowHiddenBottom="false"
+                app:hl_shadowHiddenLeft="true"
+                app:hl_shadowHiddenRight="true"
+                app:hl_shadowHiddenTop="true"
+                app:hl_shadowLimit="@dimen/dp_3">
+
+                <ImageView
+                    android:id="@+id/iv_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY" />
+            </com.lihang.ShadowLayout>
+
+            <TextView
+                android:id="@+id/tv_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:background="@drawable/bg_gray_15"
+                android:drawableLeft="@drawable/ic_delect_dress"
+                android:drawablePadding="@dimen/dp_3"
+                android:gravity="bottom"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_3"
+                android:paddingRight="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_3"
+                android:text="清除装饰"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_7"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relay_img"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_title_border"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/dp_8"
+                    android:ems="1"
+                    android:text="画框"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_7" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleView_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_m_5"
+                    android:layout_toRightOf="@+id/shadow_border" />
+
+                <com.lihang.ShadowLayout
+                    android:id="@+id/shadow_border"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_title_border"
+                    app:hl_shadowColor="#0D000000"
+                    app:hl_shadowHiddenBottom="true"
+                    app:hl_shadowHiddenLeft="true"
+                    app:hl_shadowHiddenRight="false"
+                    app:hl_shadowHiddenTop="true"
+                    app:hl_shadowLimit="@dimen/dp_5">
+
+                    <View
+                        android:layout_width="@dimen/dp_1"
+                        android:layout_height="@dimen/dp_45" />
+                </com.lihang.ShadowLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_title_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/dp_8"
+                    android:ems="1"
+                    android:text="背景"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_7" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleView_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_m_5"
+                    android:layout_toRightOf="@+id/shadow_bg" />
+
+                <com.lihang.ShadowLayout
+                    android:id="@+id/shadow_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_title_bg"
+                    app:hl_shadowColor="#0D000000"
+                    app:hl_shadowHiddenBottom="true"
+                    app:hl_shadowHiddenLeft="true"
+                    app:hl_shadowHiddenRight="false"
+                    app:hl_shadowHiddenTop="true"
+                    app:hl_shadowLimit="@dimen/dp_5">
+
+                    <View
+                        android:layout_width="@dimen/dp_1"
+                        android:layout_height="@dimen/dp_45" />
+                </com.lihang.ShadowLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.lihang.ShadowLayout>

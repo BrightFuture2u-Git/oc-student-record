@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_10"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_35"
+        android:text="请联系顾问老师添加宝宝"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_10"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_sure"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_25"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:background="@drawable/shap_blue_30"
+        android:stateListAnimator="@null"
+        android:text="我知道了"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_9"
+        android:textStyle="bold" />
+</LinearLayout>

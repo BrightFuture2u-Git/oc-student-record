@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_15"
+        android:text="画了么微课"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_22" />
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <io.drew.record.view.ResizableImageView
+                        android:src="@drawable/bg_experience_course"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:id="@+id/tag"
+                        android:layout_width="@dimen/dp_4"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:layout_marginTop="@dimen/dp_33"
+                        android:background="@drawable/shap_orange_2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_28"
+                        android:layout_toRightOf="@+id/tag"
+                        android:text="体验课"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_18" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleView_experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_m_60"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:minHeight="@dimen/dp_100" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_22">
+                    <io.drew.record.view.ResizableImageView
+                        android:src="@drawable/bg_hot_course"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:id="@+id/tag2"
+                        android:layout_width="@dimen/dp_4"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:layout_marginTop="@dimen/dp_33"
+                        android:background="@drawable/shap_blue_2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_28"
+                        android:layout_toRightOf="@+id/tag2"
+                        android:text="热销课程"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_18" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleView_hot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_m_60"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:minHeight="@dimen/dp_100"
+                    android:paddingBottom="@dimen/dp_20" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</LinearLayout>
