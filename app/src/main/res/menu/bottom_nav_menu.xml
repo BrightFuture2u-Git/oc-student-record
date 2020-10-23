@@ -3,17 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/selector_ic_home"
+        android:title="首页"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/record"
         android:enabled="true"
         android:icon="@drawable/selector_ic_record"
-        android:title="微课"
+        android:title="我的课程"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/gallery"
+        android:enabled="true"
+        android:icon="@drawable/selector_ic_record"
+        android:title="画廊"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/mine"
         android:enabled="true"
         android:icon="@drawable/selector_ic_mine"
-        android:title="我的"
+        android:title="个人中心"
         app:showAsAction="ifRoom" />
 
 </menu>

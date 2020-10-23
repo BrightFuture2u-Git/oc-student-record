@@ -36,22 +36,22 @@ public class TagHelper {
      * @param location    事件位置
      */
     public void submitEvent(String actionEvent, String location) {
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("actionEvent", actionEvent);
-        map.put("location", location);
-        map.put("source", "hualeme");
-        map.put("terminal", AppUtil.isPad(EduApplication.instance) ? "Android_Pad" : "Android_Phone");
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
-                new JSONObject(map).toString());
-        RetrofitManager.instance().getService(BuildConfig.API_URL, AppService.class).submitEvent(body).enqueue(new BaseCallback<>(result -> {
-            if (result!=null&&result) {
-                MyLog.e("操作日志上传成功");
-            } else {
-                MyLog.e("操作日志上传失败");
-            }
-        }, throwable -> {
-            MyLog.e("操作日志上传失败" + throwable.getMessage());
-        }));
+//        HashMap<String, Object> map = new HashMap<>();
+//        map.put("actionEvent", actionEvent);
+//        map.put("location", location);
+//        map.put("source", "hualeme");
+//        map.put("terminal", AppUtil.isPad(EduApplication.instance) ? "Android_Pad" : "Android_Phone");
+//        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
+//                new JSONObject(map).toString());
+//        RetrofitManager.instance().getService(BuildConfig.API_URL, AppService.class).submitEvent(body).enqueue(new BaseCallback<>(result -> {
+//            if (result!=null&&result) {
+//                MyLog.e("操作日志上传成功");
+//            } else {
+//                MyLog.e("操作日志上传失败");
+//            }
+//        }, throwable -> {
+//            MyLog.e("操作日志上传失败" + throwable.getMessage());
+//        }));
     }
 
 }

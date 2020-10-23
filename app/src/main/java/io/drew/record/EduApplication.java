@@ -10,8 +10,6 @@ import android.view.WindowManager;
 import androidx.multidex.MultiDex;
 
 import com.google.gson.Gson;
-import com.hpplay.sdk.source.api.IBindSdkListener;
-import com.hpplay.sdk.source.api.LelinkSourceSDK;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshFooter;
@@ -39,10 +37,11 @@ import io.drew.base.PreferenceManager;
 import io.drew.base.ToastManager;
 import io.drew.base.network.RetrofitManager;
 import io.drew.record.activitys.SplashActivity;
-import io.drew.record.service.bean.response.AppConfig;
 import io.drew.record.service.bean.response.AuthInfo;
 import io.drew.record.util.MySharedPreferencesUtils;
 import io.drew.record.view.MyFreshHeader;
+
+import static io.drew.record.ConfigConstant.UMENG_APP_ID;
 
 public class EduApplication extends Application {
 
@@ -57,9 +56,7 @@ public class EduApplication extends Application {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-//                layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
                 return new MyFreshHeader(context);
-//                return new ClassicsHeader(context);
             }
         });
         //设置全局的Footer构建器
@@ -71,11 +68,6 @@ public class EduApplication extends Application {
             }
         });
     }
-
-    public AppConfig config = new AppConfig() {{
-        one2OneStudentLimit = 1;
-        smallClassStudentLimit = 16;
-    }};
 
     /**
      * Application和每一个activity中重写 getResource 方法，防止系统字体影响
@@ -109,7 +101,7 @@ public class EduApplication extends Application {
         } else {
             //友盟
             UMConfigure.setLogEnabled(false);
-            UMConfigure.init(this, "5f23c2b5b4b08b653e9015b9", "hualeme", UMConfigure.DEVICE_TYPE_PHONE, "");
+            UMConfigure.init(this, UMENG_APP_ID, "QingYouZi", UMConfigure.DEVICE_TYPE_PHONE, "");
             MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);// 选用AUTO页面采集模式
         }
 
@@ -117,12 +109,6 @@ public class EduApplication extends Application {
         getAndroiodScreenProperty();
         initLocalData();
 
-        LelinkSourceSDK.getInstance().bindSdk(this, ConfigConstant.LEBO_APP_ID, ConfigConstant.LEBO_APP_SECRET, new IBindSdkListener() {
-            @Override
-            public void onBindCallback(boolean b) {
-                MyLog.d("乐播初始化结果" + b);
-            }
-        });
     }
 
     private void initLocalData() {

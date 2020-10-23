@@ -5,8 +5,13 @@ import java.util.List;
 import io.drew.record.service.bean.ResponseBody;
 import io.drew.record.service.bean.response.AddressList;
 import io.drew.record.service.bean.response.AliPayOrder;
+import io.drew.record.service.bean.response.Articles;
 import io.drew.record.service.bean.response.AuthInfo;
+import io.drew.record.service.bean.response.CommentedListInfo;
+import io.drew.record.service.bean.response.CommentsInfo;
 import io.drew.record.service.bean.response.HomeRecords;
+import io.drew.record.service.bean.response.LikedListInfo;
+import io.drew.record.service.bean.response.MessageCount;
 import io.drew.record.service.bean.response.MyRecordLecture;
 import io.drew.record.service.bean.response.MyRecordWorks;
 import io.drew.record.service.bean.response.OssRecord;
@@ -101,6 +106,66 @@ public interface AppService {
 
     @GET("/bf/course/ai/no/product/num")
     Call<ResponseBody<Integer>> getUnUploadRecordLectureNum();//未上传作品录播课列表
+
+    @GET("/forum/my/new/message/count")
+    Call<ResponseBody<MessageCount>> getNewMessageCount();//我的新消息总数
+
+    @GET("/forum/article/detail/{id}")
+    Call<ResponseBody<Articles.RecordsBean>> getArticleInfo(@Path("id") int id);//获取帖子详情
+
+    @POST("/forum/article/comment")
+    Call<ResponseBody<String>> comment(@Body RequestBody requestBody);//评论帖子
+
+    @POST("/forum/article/comment/like/{id}")
+    Call<ResponseBody<String>> likeComment(@Path("id") int id);//点赞（取消）评论
+
+    @GET("/forum/article/comment/list/{id}")
+    Call<ResponseBody<CommentsInfo>> getCommentList(@Path("id") int id,
+                                                    @Query("current") int current,
+                                                    @Query("pageSize") int pageSize);//获取评论列表
+
+    @POST("/forum/article/like/{id}")
+    Call<ResponseBody<String>> like(@Path("id") int id);//点赞（取消）帖子
+
+    @POST("/forum/article/collect/{id}")
+    Call<ResponseBody<String>> collect(@Path("id") int id);//帖子收藏
+
+    @POST("/forum/my/articles/del/{id}")
+    Call<ResponseBody<String>> delect(@Path("id") int id);//删除我的帖子
+
+    @GET("/forum/article/list")
+    Call<ResponseBody<Articles>> getArticles(
+            @Query("current") int current,
+            @Query("pageSize") int pageSize,
+            @Query("status") int status
+    );//画廊列表
+
+    @GET("/forum/my/articles")
+    Call<ResponseBody<Articles>> getMyAllArticles(
+            @Query("current") int current,
+            @Query("pageSize") int pageSize
+    );//我的动态
+
+    @GET("/forum/my/be/comment/messages")
+    Call<ResponseBody<CommentedListInfo>> getCommentedList(
+            @Query("current") int current,
+            @Query("pageSize") int pageSize
+    );//我的帖子被评论消息列表
+
+    @GET("/forum/my/be/like/messages")
+    Call<ResponseBody<LikedListInfo>> getlikedList(
+            @Query("current") int current,
+            @Query("pageSize") int pageSize
+    );//我的帖子或评论被点赞消息列表
+
+    @GET("/forum/my/collects")
+    Call<ResponseBody<Articles>> getCollection(
+            @Query("current") int current,
+            @Query("pageSize") int pageSize
+    );//我的收藏
+
+    @POST("/forum/article/add")
+    Call<ResponseBody<String>> addArticle(@Body RequestBody requestBody);//添加帖子
 
     @POST("/account/user/update")
     Call<ResponseBody<String>> userUpdate(@Body RequestBody requestBody);//更新用户信息

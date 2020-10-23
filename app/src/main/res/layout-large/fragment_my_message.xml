@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:hl_shadowColor="#1A4C4C4C"
+    app:hl_shadowHiddenBottom="true"
+    app:hl_shadowHiddenLeft="false"
+    app:hl_shadowHiddenRight="true"
+    app:hl_shadowHiddenTop="true"
+    app:hl_shadowLimit="@dimen/dp_6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_6"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/my_action_bar" />
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/slideTab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            app:tl_indicator_color="#8564FF"
+            app:tl_indicator_height="5dp"
+            app:tl_indicator_margin_bottom="@dimen/dp_5"
+            app:tl_indicator_width="10dp"
+            app:tl_tab_space_equal="true"
+            app:tl_textBold="SELECT"
+            app:tl_textSelectColor="@color/black"
+            app:tl_textUnselectColor="@color/gray_CCCCCC"
+            app:tl_textsize="@dimen/sp_9" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+</com.lihang.ShadowLayout>

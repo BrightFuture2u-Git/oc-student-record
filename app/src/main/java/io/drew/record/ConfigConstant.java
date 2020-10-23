@@ -13,10 +13,8 @@ public class ConfigConstant {
      * 7陌id
      */
     public static final String CUSTOMER_7MOOR = "ac1168f0-ab10-11ea-b2bd-935fb43f33c7";
-
-    //乐播投屏配置
-    public static final String LEBO_APP_ID = "15324";
-    public static final String LEBO_APP_SECRET = "f4cf18eb79b17d45dfa05d519c6fbc1b";
+    //友盟appid
+    public static final String UMENG_APP_ID = "5f912c528a5de91db33d8ffa";
     /**
      * web url
      */
@@ -47,7 +45,7 @@ public class ConfigConstant {
     public static final int EB_KID_CHANGE = 10004;//宝宝切换
     public static final int EB_LOGIN = 10005;//登录成功
     public static final int EB_LOGOUT = 10006;//退出登录
-
+    public static final int EB_NEW_ARTICLE = 10007;//动态发布成功
     public static final int EB_PAD_CHANGE_TAB = 10009;//我的item切换
 
     public static final int EB_WORK_DRESSED = 10014;//作品装饰完成

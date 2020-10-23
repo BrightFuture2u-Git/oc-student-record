@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBFB"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingTop="@dimen/dp_40"
+    android:paddingRight="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_5">
+
+    <LinearLayout
+        android:id="@+id/line_myarticles"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:layout_weight="1"
+        android:background="@drawable/bg_gallery_share"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_25"
+            android:text="我的动态"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_17" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_mymsg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:layout_weight="1"
+        android:background="@drawable/bg_gallery_message"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title_new_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_25"
+            android:text="我的消息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_17" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_mycollection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:layout_weight="1"
+        android:background="@drawable/bg_gallery_collection"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_25"
+            android:text="我的收藏"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_17" />
+    </LinearLayout>
+</LinearLayout>
+
+

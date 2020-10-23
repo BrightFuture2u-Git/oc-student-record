@@ -52,6 +52,22 @@
             android:screenOrientation="nosensor"
             android:theme="@style/CustomTheme" />
         <activity
+            android:name=".activitys.MyArticlesActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".activitys.MyMessageActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".activitys.MyCollectionsActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".activitys.ArticleInfoActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/CustomTheme" />
+        <activity
             android:name="io.drew.record.activitys.RegistActivity"
             android:screenOrientation="nosensor"
             android:theme="@style/CustomTheme" />

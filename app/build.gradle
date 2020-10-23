@@ -169,7 +169,6 @@ dependencies {
     implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
     implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
 
-    compile(name: 'sdk-lecast-release', ext: 'aar')
     implementation 'com.aliyun.sdk.android:AliyunPlayer:4.5.0-full'
     implementation 'com.alivc.conan:AlivcConan:0.9.5'
     implementation 'liji.library.dev:citypickerview:5.2.2'

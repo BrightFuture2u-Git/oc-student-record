@@ -33,7 +33,7 @@ import io.drew.record.util.AppUtil;
  * @CreateDate: 2020/9/7 6:42 PM
  * 录播课首页
  */
-public class RecordFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.recycleView_experience)
     protected RecyclerView recycleView_experience;

@@ -10,16 +10,13 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,21 +26,17 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import io.drew.record.ConfigConstant;
-import io.drew.record.EduApplication;
 import io.drew.record.R;
-import io.drew.record.adapters.KidAdapter;
 import io.drew.record.base.BaseActivity;
+import io.drew.record.fragments.GalleryFragment;
+import io.drew.record.fragments.HomeFragment;
 import io.drew.record.fragments.MineFragment;
-import io.drew.record.fragments.RecordFragment;
+import io.drew.record.fragments.MyRecordLecturesFragment;
 import io.drew.record.model.MessageEvent;
-import io.drew.record.service.bean.response.AuthInfo;
-import io.drew.record.util.AppUtil;
 import io.drew.record.util.CustomerHelper;
 import io.drew.record.util.TagHelper;
 import io.drew.record.util.WxShareUtil;
@@ -66,11 +59,15 @@ public class HomeActivity extends BaseActivity {
     protected void initData() {
         sharedPreferences = getSharedPreferences("serviceNotice", Context.MODE_PRIVATE);
         mFragments = new ArrayList<>();
-        mFragments.add(new RecordFragment());
+        mFragments.add(new HomeFragment());
+        mFragments.add(new MyRecordLecturesFragment());
+        mFragments.add(new GalleryFragment());
         mFragments.add(new MineFragment());
 
         ids = new ArrayList<>();
+        ids.add(R.id.home);
         ids.add(R.id.record);
+        ids.add(R.id.gallery);
         ids.add(R.id.mine);
 
         setFragmentPosition(0);
@@ -112,14 +109,22 @@ public class HomeActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.record:
+                    case R.id.home:
                         customStatusBar();
                         setFragmentPosition(0);
                         TagHelper.getInstance().submitEvent("btn_v", "home_bottom");
                         break;
+                    case R.id.record:
+                        customStatusBar();
+                        setFragmentPosition(1);
+                        break;
+                    case R.id.gallery:
+                        customStatusBar();
+                        setFragmentPosition(2);
+                        break;
                     case R.id.mine:
                         setStatusBarFullTransparent();
-                        setFragmentPosition(1);
+                        setFragmentPosition(3);
                         break;
                     default:
                         break;
@@ -242,79 +247,5 @@ public class HomeActivity extends BaseActivity {
         lp.height = getResources().getDimensionPixelOffset(R.dimen.dp_400);
         dialogWindow.setAttributes(lp);
         addDialog.show();
-    }
-
-    /**
-     * 切换宝宝弹窗
-     *
-     * @param studentList
-     */
-    public void showKidChangeDialog(List<AuthInfo.UserBean.StudentListBean> studentList) {
-        final int[] current = {EduApplication.instance.currentKid_index};
-        Dialog dialog = new Dialog(this, R.style.ActionSheetDialogStyle);
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_change_kid, null);
-        GridView gridView = view.findViewById(R.id.gridView);
-        TextView tv_cancle = view.findViewById(R.id.tv_cancle);
-        TextView tv_sure = view.findViewById(R.id.tv_sure);
-        KidAdapter kidAdapter = new KidAdapter(HomeActivity.this);
-        kidAdapter.setData(studentList, current[0]);
-        gridView.setAdapter(kidAdapter);
-        tv_cancle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        tv_sure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (studentList == null) {
-                    dialog.dismiss();
-                    return;
-                }
-                if (current[0] != EduApplication.instance.currentKid_index) {
-                    EduApplication.instance.currentKid_index = current[0];
-                    EduApplication.instance.currentKid = studentList.get(current[0]);
-//                    MySharedPreferencesUtils.put(HomeActivity.this, ConfigConstant.SP_CURRENT_KID_INDEX, current[0]);
-                    EventBus.getDefault().post(new MessageEvent(ConfigConstant.EB_KID_CHANGE));
-                }
-                dialog.dismiss();
-            }
-        });
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (studentList == null || position == studentList.size()) {
-                    Dialog addDialog = new Dialog(HomeActivity.this, R.style.mdialog);
-                    View content = LayoutInflater.from(HomeActivity.this).inflate(R.layout.dialog_notice, null);
-                    Button btn_sure = content.findViewById(R.id.btn_sure);
-                    addDialog.setContentView(content);
-                    btn_sure.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            addDialog.dismiss();
-                        }
-                    });
-
-                    Window dialogWindow = addDialog.getWindow();
-                    WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-                    lp.width = getResources().getDimensionPixelOffset(R.dimen.dp_320);
-                    lp.height = getResources().getDimensionPixelOffset(R.dimen.dp_240);
-                    dialogWindow.setAttributes(lp);
-                    addDialog.show();
-                } else {
-                    current[0] = position;
-                    kidAdapter.checkItem(current[0]);
-                }
-            }
-        });
-        dialog.setContentView(view);
-        Window dialogWindow = dialog.getWindow();
-        dialogWindow.setGravity(Gravity.BOTTOM);
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.y = 0;//设置Dialog距离底部的距离
-        lp.width = AppUtil.getScreenWidth(HomeActivity.this);
-        dialogWindow.setAttributes(lp);
-        dialog.show();
     }
 }

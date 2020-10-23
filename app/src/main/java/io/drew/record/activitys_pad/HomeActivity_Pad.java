@@ -13,14 +13,11 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -37,8 +34,6 @@ import com.moor.imkf.InitListener;
 import com.moor.imkf.OnSessionBeginListener;
 import com.moor.imkf.model.entity.Peer;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,13 +43,13 @@ import io.drew.record.ConfigConstant;
 import io.drew.record.EduApplication;
 import io.drew.record.R;
 import io.drew.record.activitys.WebViewActivity;
-import io.drew.record.adapters.KidAdapter;
 import io.drew.record.base.BaseActivity;
+import io.drew.record.fragments_pad.GalleryFragmentPad;
+import io.drew.record.fragments_pad.HomeFragmentPad;
 import io.drew.record.fragments_pad.MineFragmentPad;
-import io.drew.record.fragments_pad.RecordFragment;
+import io.drew.record.fragments_pad.MyRecordLecturesFragment;
 import io.drew.record.fragments_pad.VerticalLoginFragment;
 import io.drew.record.model.MessageEvent;
-import io.drew.record.service.bean.response.AuthInfo;
 import io.drew.record.util.CustomerHelper;
 import io.drew.record.util.GlideUtils;
 import io.drew.record.util.TagHelper;
@@ -67,8 +62,12 @@ import io.drew.record.util.WxShareUtil;
 public class HomeActivity_Pad extends BaseActivity {
     @BindView(R.id.container)
     protected RelativeLayout container;
+    @BindView(R.id.tv_home)
+    protected TextView tv_home;
     @BindView(R.id.tv_record)
     protected TextView tv_record;
+    @BindView(R.id.tv_gallery)
+    protected TextView tv_gallery;
     @BindView(R.id.tv_mine)
     protected TextView tv_mine;
     @BindView(R.id.line_changeBaby)
@@ -80,7 +79,9 @@ public class HomeActivity_Pad extends BaseActivity {
 
     private FragmentTransaction mFragmentTransaction;//fragment事务
     private FragmentManager mFragmentManager;//fragment管理者
-    private RecordFragment recordFragment;
+    private HomeFragmentPad homeFragment;
+    private MyRecordLecturesFragment recordFragment;
+    private GalleryFragmentPad galleryFragment;
     private MineFragmentPad mineFragment;
     public int currentTab = -1;
     public SharedPreferences sharedPreferences;
@@ -211,33 +212,32 @@ public class HomeActivity_Pad extends BaseActivity {
         mFragmentManager = getSupportFragmentManager();
         changeTab(0);
 
-        if (isLogin()) {
-            GlideUtils.loadBabyHead(this, EduApplication.instance.authInfo.getUser().getHeadImage(), iv_head);
-            iv_head.setImageResource(R.drawable.head_cat);
-            tv_name.setText("切换宝宝");
-        } else {
-            iv_head.setImageResource(R.drawable.head_cat);
-            tv_name.setText("请登录");
-        }
+        fresh();
 
         if (!sharedPreferences.getBoolean(ConfigConstant.SP_ALLOW_SERVICE, false)) {
             showServiceNoticeDialog();
         }
     }
 
-    @OnClick({R.id.tv_record, R.id.tv_mine, R.id.line_changeBaby})
+    @OnClick({R.id.tv_home, R.id.tv_record, R.id.tv_gallery, R.id.tv_mine, R.id.line_changeBaby})
     protected void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_record:
+            case R.id.tv_home:
                 changeTab(0);
                 TagHelper.getInstance().submitEvent("btn_v", "home_bottom");
                 break;
-            case R.id.tv_mine:
+            case R.id.tv_record:
                 changeTab(1);
+                break;
+            case R.id.tv_gallery:
+                changeTab(2);
+                break;
+            case R.id.tv_mine:
+                changeTab(3);
                 break;
             case R.id.line_changeBaby:
                 if (isLogin()) {
-                    showKidChangeDialog(EduApplication.instance.authInfo.getUser().getStudentList());
+//                    showKidChangeDialog(EduApplication.instance.authInfo.getUser().getStudentList());
                 } else {
                     goLogin();
                 }
@@ -249,10 +249,18 @@ public class HomeActivity_Pad extends BaseActivity {
         if (index == currentTab) return;
         switch (currentTab) {
             case 0:
+                tv_home.setSelected(false);
+                tv_home.setTextColor(Color.parseColor("#333333"));
+                break;
+            case 1:
                 tv_record.setSelected(false);
                 tv_record.setTextColor(Color.parseColor("#333333"));
                 break;
-            case 1:
+            case 2:
+                tv_gallery.setSelected(false);
+                tv_gallery.setTextColor(Color.parseColor("#333333"));
+                break;
+            case 3:
                 tv_mine.setSelected(false);
                 tv_mine.setTextColor(Color.parseColor("#333333"));
                 break;
@@ -262,8 +270,18 @@ public class HomeActivity_Pad extends BaseActivity {
         hideFragment(mFragmentTransaction);
         switch (index) {
             case 0:
+                if (homeFragment == null) {
+                    homeFragment = new HomeFragmentPad();
+                    mFragmentTransaction.add(R.id.container, homeFragment);
+                } else {
+                    mFragmentTransaction.show(homeFragment);
+                }
+                tv_home.setSelected(true);
+                tv_home.setTextColor(Color.parseColor("#6A48F5"));
+                break;
+            case 1:
                 if (recordFragment == null) {
-                    recordFragment = new RecordFragment();
+                    recordFragment = new MyRecordLecturesFragment();
                     mFragmentTransaction.add(R.id.container, recordFragment);
                 } else {
                     mFragmentTransaction.show(recordFragment);
@@ -271,7 +289,17 @@ public class HomeActivity_Pad extends BaseActivity {
                 tv_record.setSelected(true);
                 tv_record.setTextColor(Color.parseColor("#6A48F5"));
                 break;
-            case 1:
+            case 2:
+                if (galleryFragment == null) {
+                    galleryFragment = new GalleryFragmentPad();
+                    mFragmentTransaction.add(R.id.container, galleryFragment);
+                } else {
+                    mFragmentTransaction.show(galleryFragment);
+                }
+                tv_gallery.setSelected(true);
+                tv_gallery.setTextColor(Color.parseColor("#6A48F5"));
+                break;
+            case 3:
                 if (mineFragment == null) {
                     mineFragment = new MineFragmentPad();
                     mFragmentTransaction.add(R.id.container, mineFragment);
@@ -289,7 +317,7 @@ public class HomeActivity_Pad extends BaseActivity {
         if (isLogin()) {
             GlideUtils.loadBabyHead(this, EduApplication.instance.authInfo.getUser().getHeadImage(), iv_head);
             iv_head.setImageResource(R.drawable.head_cat);
-            tv_name.setText("切换宝宝");
+            tv_name.setText(EduApplication.instance.authInfo.getUser().getNickname());
         } else {
             iv_head.setImageResource(R.drawable.head_cat);
             tv_name.setText("请登录");
@@ -302,8 +330,14 @@ public class HomeActivity_Pad extends BaseActivity {
      * @param fragmentTransaction
      */
     private void hideFragment(FragmentTransaction fragmentTransaction) {
+        if (homeFragment != null) {
+            fragmentTransaction.hide(homeFragment);
+        }
         if (recordFragment != null) {
             fragmentTransaction.hide(recordFragment);
+        }
+        if (galleryFragment != null) {
+            fragmentTransaction.hide(galleryFragment);
         }
         if (mineFragment != null) {
             fragmentTransaction.hide(mineFragment);
@@ -386,71 +420,4 @@ public class HomeActivity_Pad extends BaseActivity {
         addDialog.show();
     }
 
-    public void showKidChangeDialog(List<AuthInfo.UserBean.StudentListBean> studentList) {
-        final int[] current = {EduApplication.instance.currentKid_index};
-        Dialog dialog = new Dialog(this, R.style.ActionSheetDialogStyle);
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_change_kid, null);
-        GridView gridView = view.findViewById(R.id.gridView);
-        TextView tv_cancle = view.findViewById(R.id.tv_cancle);
-        TextView tv_sure = view.findViewById(R.id.tv_sure);
-        KidAdapter kidAdapter = new KidAdapter(HomeActivity_Pad.this);
-        kidAdapter.setData(studentList, current[0]);
-        gridView.setAdapter(kidAdapter);
-        tv_cancle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        tv_sure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (studentList == null) {
-                    dialog.dismiss();
-                    return;
-                }
-                if (current[0] != EduApplication.instance.currentKid_index) {
-                    EduApplication.instance.currentKid_index = current[0];
-                    EduApplication.instance.currentKid = studentList.get(current[0]);
-//                    MySharedPreferencesUtils.put(HomeActivity_Pad.this, ConfigConstant.SP_CURRENT_KID_INDEX, current[0]);
-                    EventBus.getDefault().post(new MessageEvent(ConfigConstant.EB_KID_CHANGE));
-                }
-                dialog.dismiss();
-            }
-        });
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (studentList == null || position == studentList.size()) {
-                    Dialog addDialog = new Dialog(HomeActivity_Pad.this, R.style.mdialog);
-                    View content = LayoutInflater.from(HomeActivity_Pad.this).inflate(R.layout.dialog_notice, null);
-                    Button btn_sure = content.findViewById(R.id.btn_sure);
-                    addDialog.setContentView(content);
-                    btn_sure.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            addDialog.dismiss();
-                        }
-                    });
-
-                    Window dialogWindow = addDialog.getWindow();
-                    WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-                    lp.width = getResources().getDimensionPixelOffset(R.dimen.dp_160);
-                    lp.height = getResources().getDimensionPixelOffset(R.dimen.dp_120);
-                    dialogWindow.setAttributes(lp);
-                    addDialog.show();
-                } else {
-                    current[0] = position;
-                    kidAdapter.checkItem(current[0]);
-                }
-            }
-        });
-        dialog.setContentView(view);
-        Window dialogWindow = dialog.getWindow();
-        dialogWindow.setGravity(Gravity.CENTER);
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.width = getResources().getDimensionPixelOffset(R.dimen.dp_188);
-        dialogWindow.setAttributes(lp);
-        dialog.show();
-    }
 }

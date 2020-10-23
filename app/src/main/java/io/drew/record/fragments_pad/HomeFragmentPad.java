@@ -30,7 +30,7 @@ import io.drew.record.service.bean.response.HomeRecords;
  * @CreateDate: 2020/9/7 6:42 PM
  * 录播课首页
  */
-public class RecordFragment extends BaseFragment {
+public class HomeFragmentPad extends BaseFragment {
 
     @BindView(R.id.recycleView_experience)
     protected RecyclerView recycleView_experience;
